@@ -17,14 +17,18 @@ class Config:
         # Model 1 directories
         self._MODEL1_TR_DATA = os.path.join(self._DATA_DIR, "model1/train_dataB_model_1.pth")
         self._MODEL1_VAL_DATA = os.path.join(self._DATA_DIR, "model1/val_dataB_model_1.pth")
-        self._MODEL_OUTPUT = os.path.join(self._OUTPUT_DIR, "model1")
+        self._MODEL_OUTPUT = os.path.join(self._OUTPUT_DIR, "model1/model1_weights.pth")
+        self._MODEL_OUTPUT_GRAPH = os.path.join(self._OUTPUT_DIR, "model1/training_results.png")
+        self._SAVE_LOG= os.path.join(self._OUTPUT_DIR, "model1")
 
     def _set_hyperparameters(self):
         """Define all hyperparameters."""
-        self._batch_size = 16
+        self._batch_size = 128
         self._learning_rate = 0.001
-        self._epochs = 100
-        self._valdata_ratio = 0.1
+        self._epochs = 20
+        self._valdata_ratio = 0.2
+        self._width_transform=64
+        self._height_transform=64
 
     def _set_model_parameters(self):
         """Define model-specific parameters."""
@@ -42,6 +46,8 @@ class Config:
             "train_path": self._MODEL1_TR_DATA,
             "test_path": self._MODEL1_VAL_DATA,
             "save_path": self._MODEL_OUTPUT,
+            "output_graph": self._MODEL_OUTPUT_GRAPH,
+            "save_log": self._SAVE_LOG
         }
 
     @property
@@ -52,6 +58,8 @@ class Config:
             "learning_rate": self._learning_rate,
             "epochs": self._epochs,
             "valdata_ratio": self._valdata_ratio,
+            "height_transform": self._height_transform,
+            "width_transform": self._width_transform
         }
 
     @property
