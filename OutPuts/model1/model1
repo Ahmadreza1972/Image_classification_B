@@ -408,3 +408,5 @@ CustomResNet18(
 2025-02-18 16:24:16,337 - INFO - Test Loss: 0.6429
 2025-02-18 16:24:16,338 - INFO - Test Accuracy: 78.80%
 2025-02-18 16:24:16,338 - INFO - ======== Model Training Completed! ========
+2025-02-19 12:48:59,420 - INFO - ======== Starting Model Training ========
+2025-02-19 12:48:59,423 - INFO - Loading dataset...
