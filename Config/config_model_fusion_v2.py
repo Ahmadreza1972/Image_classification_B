@@ -23,6 +23,8 @@ class Config:
         self._MODEL1_DATA = os.path.join(self._DATA_DIR, "model1/val_dataB_model_1.pth")
         self._MODEL2_DATA = os.path.join(self._DATA_DIR, "model2/val_dataB_model_2.pth")
         self._MODEL3_DATA = os.path.join(self._DATA_DIR, "model3/val_dataB_model_3.pth")
+        self._GROUP_LABEL=os.path.join(self._DATA_DIR, "fusion/cifar100_classes.txt")
+
         self._SAVE_LOG= os.path.join(self._OUTPUT_DIR, "fusion")
 
     def _set_hyperparameters(self):
@@ -54,6 +56,7 @@ class Config:
             "model1_weights": self._MODEL1_WEIGHTS,
             "model2_weights": self._MODEL2_WEIGHTS,
             "model3_weights": self._MODEL3_WEIGHTS,
+            "group_labels":self._GROUP_LABEL,
             "save_log":self._SAVE_LOG
         }
 

@@ -11,7 +11,7 @@ class Logger:
             log_filename = f"training_{datetime.now().strftime('%Y-%m-%d')}.log"
 
         log_file = os.path.join(log_dir, log_filename)
-
+        open(log_file, 'w').close()
         # Configure logging
         logging.basicConfig(
             filename=log_file,

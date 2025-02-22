@@ -33,7 +33,11 @@ class ModelProcess:
         self._models_weights_path=[self._model1_weights_path,self._model2_weights_path,self._model3_weights_path] 
          
         self._save_log=self._config1.directories["save_log"]
-        
+        self._save_graph=self._config1.directories["save_log"]
+        self._group_labels_path=self._config1.directories["group_labels"]
+        with open(self._group_labels_path, "r") as file:
+            labels = [line.strip() for line in file]  # Convert each line to a float
+        self._group_labels=labels
         self._log=Logger(self._save_log,"model")
         
         # set hyperparameters
@@ -50,25 +54,18 @@ class ModelProcess:
         self._results = pd.DataFrame(columns=["True label"])
         self._orginal_labels=[[173, 137, 34, 159, 201],[34, 202, 80, 135, 24],[173, 202, 130, 124, 125]]
 
-    def save_result(self,model,tr_ac,val_ac,tr_los,val_los):
-        
-        #save trained model weight
-        save_dir = os.path.dirname(self._save_path)
-        if not os.path.exists(save_dir):
-            os.makedirs(save_dir)
-        torch.save(model.state_dict(), self._save_path)
-        
-        #save validation and train graph
-        fig,ax=plt.subplots(ncols=2)
-        ax[0].plot(tr_ac, label="Train_ac")
-        ax[0].plot(val_ac, label="val_ac")
-        ax[0].legend()
-        ax[1].plot(tr_los, label="Train_los")
-        ax[1].plot(val_los, label="val_los")
-        ax[1].legend()
+    def save_result(self,img,act_label,pre_label,pic_num):
+
+        # Show the image
+        img = img.permute(1, 2, 0)
+        plt.imshow(img)
+        plt.title(f"orginal:{self._group_labels[act_label]} predicted:{self._group_labels[pre_label]}")
+        plt.axis("off")  # Remove axes
+        #plt.show()
         
         # Save the figure
-        plt.savefig(self._save_graph, dpi=300, bbox_inches='tight')  # High-quality save
+        plt.savefig(os.path.join(self._save_graph, f"results{pic_num}.png"), dpi=300, bbox_inches='tight')  # High-quality save
+    
     
     def get_predictions_and_probabilities(self,model, orginallabels,dataloader, device='cpu'):
         model.to(device)
@@ -217,7 +214,36 @@ class ModelProcess:
         accuracy = (detected_labels == y_test).mean()
 
         print("Meta-Model Accuracy:", accuracy)  
+
+    def get_final_estimation_bymax(self):
+        
+        total_correct=0
+        total_row=0
+        data_iter = iter(self._dataloader)
+        for row in range(len(self._results)):
+            pr1 = max(np.array(self._results.loc[row]["model 1 prp"]))
+            pr2 = max(np.array(self._results.loc[row]["model 2 prp"]))
+            pr3 = max(np.array(self._results.loc[row]["model 3 prp"]))
+            pr_row=[pr1,pr2,pr3]
+            elected=np.argmax(pr_row)
+
+            true_labels=self._results.loc[row]["True label"]
+            predictedlabel=self._results.loc[row][f"model {elected+1} label"]
+            
+            
+            images, labels = next(data_iter)  # Fetch a batch
+            image = images[row % len(images)]
+            #if row % 100 ==0:
+                #self.save_result(image,labels,predictedlabel,row)
+            
+            
+            total_row+=1
+            if (true_labels==predictedlabel):
+                total_correct+=1
+        accuracy=total_correct/total_row        
+        self._log.log(f"Meta-Model Accuracy:{accuracy}" )
             
 model=ModelProcess()
 model.models_output_colector()
-model.get_final_estimation()
+#model.get_final_estimation()
+model.get_final_estimation_bymax()

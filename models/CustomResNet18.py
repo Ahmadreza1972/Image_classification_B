@@ -9,14 +9,13 @@ class CustomResNet18(nn.Module):
         # Adjust the first convolutional layer for 32x32 input
         self.resnet18.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
         self.resnet18.maxpool = nn.Identity()  # Remove maxpool for smaller images
-        self.resnet18.layer4 = nn.Identity()
         
         # Freeze layers if specified
         if freeze_layers:
             for param in self.resnet18.parameters():
                 param.requires_grad = False
         
-        in_features = 256
+        in_features = 512
         self.resnet18.fc = nn.Linear(in_features, num_classes)
 
     def forward(self, x):
