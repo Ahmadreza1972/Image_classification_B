@@ -24,7 +24,7 @@ class Config:
     def _set_hyperparameters(self):
         """Define all hyperparameters."""
         self._batch_size = 128
-        self._learning_rate = 0.005
+        self._learning_rate = 0.001
         self._epochs = 30
         self._valdata_ratio = 0.3
         self._width_transform=64
