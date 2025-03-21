@@ -263,7 +263,7 @@ class ByMetta(FusBaseModel):
         # Compute accuracy
         final_accuracy = accuracy_score(y_test_classes, y_pred_class)
 
-        self._log.log("final_accuracy:", final_accuracy)
+        self._log.log(f"final_accuracy: {final_accuracy}")
         k=0
         for batch_inputs,batch_labels in self._dataloader_base_tst:
             for i in range(batch_inputs.shape[0]): 
