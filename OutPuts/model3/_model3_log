@@ -1,0 +1,124 @@
+2025-03-14 10:34:54,501 - INFO - ======== Starting Model Training ========
+2025-03-14 10:34:54,501 - INFO - Loading dataset...
+2025-03-14 10:34:55,276 - INFO - Dataset loaded successfully!
+2025-03-14 10:34:55,276 - INFO - Initializing the model...
+2025-03-14 10:34:55,379 - INFO - Model initialized with 11,304,010 trainable parameters.
+2025-03-14 10:34:55,379 - INFO - Model Architecture: 
+CustomResNet18(
+  (resnet18): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (maxpool): Identity()
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): Linear(in_features=512, out_features=5, bias=True)
+  )
+  (classifier): Sequential(
+    (0): Linear(in_features=512, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Dropout(p=0.9, inplace=False)
+    (3): Linear(in_features=256, out_features=5, bias=True)
+  )
+)
+2025-03-14 10:34:55,379 - INFO - Starting training for 20 epochs...
+2025-03-14 10:35:01,329 - INFO - Tr_Loss: 1.1039, val_loss: 1.5646, Tr_acc: 56.01237842617153, val_ac: 47.93814432989691
+2025-03-14 10:35:06,964 - INFO - Tr_Loss: 0.5247, val_loss: 1.5161, Tr_acc: 80.1945181255526, val_ac: 57.11340206185567
+2025-03-14 10:35:12,603 - INFO - Tr_Loss: 0.2081, val_loss: 1.5479, Tr_acc: 92.48452696728559, val_ac: 60.51546391752577
+2025-03-14 10:35:18,235 - INFO - Tr_Loss: 0.1150, val_loss: 1.2668, Tr_acc: 95.84438549955792, val_ac: 66.18556701030928
+2025-03-14 10:35:23,863 - INFO - Tr_Loss: 0.0998, val_loss: 1.5589, Tr_acc: 96.64014146772767, val_ac: 63.1958762886598
+2025-03-14 10:35:29,488 - INFO - Tr_Loss: 0.1136, val_loss: 1.4468, Tr_acc: 95.93280282935456, val_ac: 65.6701030927835
+2025-03-14 10:35:35,107 - INFO - Tr_Loss: 0.0767, val_loss: 1.2080, Tr_acc: 97.48010610079575, val_ac: 68.55670103092784
+2025-03-14 10:35:40,729 - INFO - Tr_Loss: 0.0647, val_loss: 1.4906, Tr_acc: 98.09902740937224, val_ac: 67.73195876288659
+2025-03-14 10:35:46,354 - INFO - Tr_Loss: 0.0543, val_loss: 1.4992, Tr_acc: 98.18744473916888, val_ac: 64.84536082474227
+2025-03-14 10:35:51,985 - INFO - Tr_Loss: 0.0715, val_loss: 1.8969, Tr_acc: 97.48010610079575, val_ac: 61.649484536082475
+2025-03-14 10:35:57,608 - INFO - Tr_Loss: 0.0813, val_loss: 1.2427, Tr_acc: 97.39168877099911, val_ac: 69.38144329896907
+2025-03-14 10:36:03,240 - INFO - Tr_Loss: 0.0459, val_loss: 1.3340, Tr_acc: 98.71794871794872, val_ac: 69.58762886597938
+2025-03-14 10:36:08,864 - INFO - Tr_Loss: 0.0340, val_loss: 1.1968, Tr_acc: 99.07161803713528, val_ac: 70.20618556701031
+2025-03-14 10:36:14,498 - INFO - Tr_Loss: 0.0239, val_loss: 1.1325, Tr_acc: 99.60212201591511, val_ac: 72.88659793814433
+2025-03-14 10:36:20,130 - INFO - Tr_Loss: 0.0098, val_loss: 1.1099, Tr_acc: 99.73474801061008, val_ac: 72.37113402061856
+2025-03-14 10:36:25,759 - INFO - Tr_Loss: 0.0055, val_loss: 1.0688, Tr_acc: 99.86737400530504, val_ac: 73.19587628865979
+2025-03-14 10:36:31,391 - INFO - Tr_Loss: 0.0083, val_loss: 1.2114, Tr_acc: 99.69053934571176, val_ac: 71.54639175257732
+2025-03-14 10:36:37,021 - INFO - Tr_Loss: 0.0044, val_loss: 1.0671, Tr_acc: 100.0, val_ac: 73.29896907216495
+2025-03-14 10:36:42,650 - INFO - Tr_Loss: 0.0011, val_loss: 1.0187, Tr_acc: 100.0, val_ac: 74.5360824742268
+2025-03-14 10:36:48,275 - INFO - Tr_Loss: 0.0005, val_loss: 0.9965, Tr_acc: 100.0, val_ac: 74.3298969072165
+2025-03-14 10:36:48,873 - INFO - Saving trained model and training results...
+2025-03-14 10:36:48,880 - INFO - Starting model evaluation...
+2025-03-14 10:36:49,495 - INFO - Test Loss: 0.8967
+2025-03-14 10:36:49,495 - INFO - Test Accuracy: 77.20%
+2025-03-14 10:36:49,495 - INFO - ======== Model Training Completed! ========

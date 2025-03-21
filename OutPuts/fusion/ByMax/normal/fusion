@@ -1,0 +1,20 @@
+2025-03-14 12:00:44,961 - INFO - ======== Starting Model Training ========
+2025-03-14 12:00:44,961 - INFO - Loading dataset 0...
+2025-03-14 12:00:45,031 - INFO - Dataset0 loaded successfully!
+2025-03-14 12:00:45,050 - INFO - Loading dataset 1...
+2025-03-14 12:00:45,097 - INFO - Dataset1 loaded successfully!
+2025-03-14 12:00:45,119 - INFO - Loading dataset 2...
+2025-03-14 12:00:45,176 - INFO - Dataset2 loaded successfully!
+2025-03-14 12:00:50,026 - INFO - Initializing the model...
+2025-03-14 12:00:52,554 - INFO - Model 1 Accuracy: 0.3293333333333333
+2025-03-14 12:00:54,718 - INFO - Model 2 Accuracy: 0.32133333333333336
+2025-03-14 12:00:56,736 - INFO - Model 3 Accuracy: 0.25733333333333336
+2025-03-14 12:00:56,826 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:13,891 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:14,106 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:14,356 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:14,673 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:15,010 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:15,398 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:15,863 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2025-03-14 12:01:16,331 - INFO - Meta-Model Accuracy:0.45466666666666666

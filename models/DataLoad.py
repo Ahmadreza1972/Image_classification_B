@@ -4,13 +4,14 @@ from torch.utils.data import DataLoader, TensorDataset, random_split
 
 class DataLoad:
     
-    def __init__(self,train_path,test_path,valdata_ratio,batch_size,height_transform,width_transform):
+    def __init__(self,train_path,test_path,valdata_ratio,batch_size,height_transform,width_transform,label_path=None):
         self._train_path=train_path
         self._test_path=test_path
         self._valdata_ratio=valdata_ratio
         self._batch_size=batch_size
         self._height_transform=height_transform
         self._width_transform=width_transform
+        self._label_path=label_path
 
     # Load dataset from .pth file
     def load_data(self,path):
@@ -20,7 +21,7 @@ class DataLoad:
             labels = raw_data['labels']
         else:
             labels = raw_data['labels'].tolist()
-        indices = [] #raw_data['indices']
+        indices = list(range(len(labels)))
         return data, labels , indices
     
     def remap_labels(self,labels, class_mapping):
@@ -29,8 +30,8 @@ class DataLoad:
     # Prepare DataLoader with transform
     def create_dataloader(self,images, labels, batch_size, shuffle=False):
         #images = torch.tensor(images).float()  # Convert images to float tensor if necessary
-        unique_labels = sorted(set(labels))
-        class_mapping = {label: i for i, label in enumerate(unique_labels)}
+        self._unique_labels = sorted(set(labels))
+        class_mapping = {label: i for i, label in enumerate(self._unique_labels)}
         remapped_labels = self.remap_labels(labels, class_mapping)
         labels = torch.tensor(remapped_labels).long()  # Convert labels to long tensor (for classification)
         dataset = TensorDataset(images, labels)
@@ -84,7 +85,7 @@ class DataLoad:
             train_loader = self.create_dataloader(images, labels, batch_size=self._batch_size)
             val_loader=[]
             test_loader=[]
-        return train_loader,val_loader,test_loader
+        return train_loader,val_loader,test_loader,self._unique_labels
         
         
             

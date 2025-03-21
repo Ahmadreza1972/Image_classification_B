@@ -23,7 +23,7 @@ def load_pth(file_path):
 if __name__ == '__main__':
     
     # Load and display images for each class in the dataset
-    path='C:\\Users\\ahmad\\OneDrive\\Learnings\\git repository\\Image_classification_B\\Data\\model1\\val_dataB_model_1.pth'
+    path='C:\\Users\\ahmad\\OneDrive\\Learnings\\git repository\\Image_classification_B\\Data\\model3\\val_dataB_model_3.pth'
     train_data, train_labels = load_pth(path)
     print('Displaying images for all classes:')
     display_images(train_data, train_labels)

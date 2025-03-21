@@ -14,8 +14,19 @@ class CustomResNet18(nn.Module):
         if freeze_layers:
             for param in self.resnet18.parameters():
                 param.requires_grad = False
+                # Define the classification head with dropout
         
-        in_features = 512
+        in_features = 512        
+                
+        self.classifier = nn.Sequential(
+            nn.Linear(in_features, 256),  # Reduce dimensionality
+            nn.ReLU(),
+            nn.Dropout(p=0.9),   # Dropout layer
+            nn.Linear(256, num_classes)   # Final output layer
+        )
+        
+        self.resnet18.fc = self.classifier
+        
         self.resnet18.fc = nn.Linear(in_features, num_classes)
 
     def forward(self, x):
