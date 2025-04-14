@@ -106,6 +106,6 @@ class ByDS(FusBaseModel):
        
             
       
-model=ByDS(Mixed=True,method="DS")# --DS just work with mix data
+model=ByDS(Mixed=False,method="DS")# --DS just work with mix data
 model.models_output_colector()
 model.get_final_by_DS()

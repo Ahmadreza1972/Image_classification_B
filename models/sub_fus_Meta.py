@@ -161,5 +161,5 @@ class ByMetta(FusBaseModel):
             
             
             
-model=ByMetta(Mixed=False,method="TrainMeta",act_train=False)
+model=ByMetta(Mixed=True,method="TrainMeta",act_train=False)
 model.meta_model_output()
